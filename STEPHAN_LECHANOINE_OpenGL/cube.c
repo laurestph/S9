@@ -157,6 +157,7 @@ void keyboard(unsigned char key,int x,int y)
    printf("o : faire tourner le cube autour du centre de repere de scène dans le plan (Oxz)\n");
    printf("r : reset les rotations\n");  
    printf("t/T : translater selon l'axe 0x\n");
+   printf("m/M : tourner l'objet sur lui même selon l'axe Oy\n")
    printf("x : sortie (exit) \n"); 
   case 'f': 
    glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
@@ -211,10 +212,14 @@ case 'd' :
     theta_x=0;
     theta_y=0;
     theta_z=0;
+    x0=0;
    break;
 
   case 'm':
    theta_y_local+=1.0;
+   break;
+  case 'M':
+   theta_y_local-=1.0;
    break;
   case 'x' :
    exit(0);
