@@ -3,7 +3,7 @@ from sys import argv, exit
 from time import sleep
 from math import pi,cos,sin
 
-from models import world_coordinate_system, square
+from models import create_axe, create_floor, create_stick, world_coordinate_system, square
 
 try:
   from OpenGL.GLUT import *
@@ -38,6 +38,7 @@ def display() :
   world_coordinate_system(2*size)
   glRotatef(theta_y,0,1,0)
   glPushMatrix()
+  create_axe(0.05)
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
   square(size)

@@ -10,8 +10,7 @@ except:
 def create_base(size) :
   glutSolidCube(size)
 
-def create_sphere(radius) :
-  longitude,latitude=10,20
+def create_sphere(radius,longitude=10,latitude=20) :
   params=gluNewQuadric()
   gluQuadricDrawStyle(params,GLU_FILL)
   gluQuadricTexture(params,GL_TRUE)
@@ -43,6 +42,18 @@ def create_stick(base,top,height,slices=10,stacks=5) :
   create_disk(0,base,slices,stacks)
   glPopMatrix()
 
+def create_axe(size,slices=10,stacks=5) :
+  glPushMatrix()
+  glColor3f(1.0,0.0,0.0)
+  glRotatef(180,0,1,0)
+  create_disk(0,size,slices,stacks)
+  glPopMatrix()
+  create_cylinder(size,size,12*size,slices,stacks)
+  glPushMatrix()
+  glTranslatef(0,0,12*size)
+  create_cone(size*1.5,4*size,slices,stacks)
+  glPopMatrix()
+
 def create_cone(base,height,slices=10,stacks=5) :
   glPushMatrix()
   glRotatef(180,0,1,0)
@@ -50,9 +61,7 @@ def create_cone(base,height,slices=10,stacks=5) :
   glPopMatrix()
   create_cylinder(base,0,height,slices,stacks)
 
-def create_axe(size) :
-    pass
-    
+
 def world_coordinate_system(size) :
   glBegin(GL_LINES)
   glColor3ub(255,255,255)
