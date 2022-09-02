@@ -14,6 +14,7 @@ static float size=0.5;
 static float theta_y=0.0;
 static float theta_x=0.0;
 static float theta_z=0.0;
+static float theta_y_local=0.0;
 static float x0=0.0;
 
 void gl_init(void);
@@ -120,6 +121,9 @@ void display() {
  glRotatef(theta_y,0,1,0);
  glRotatef(theta_z,0,0,1);
  glTranslatef(x0,0,0);
+ //glLoadIdentity();
+ glRotatef(theta_y_local,0,1,0);
+ 
  cube(size);
  glutSwapBuffers();
 }
@@ -149,6 +153,7 @@ void keyboard(unsigned char key,int x,int y)
    printf("y/Y : tourner l'objet autour de l'axe Oy\n"); 
    printf("d/g : tourner l'objet autour de l'axe Ox\n"); 
    printf("z/Z : tourner l'objet autour de l'axe Ox\n"); 
+   printf("t/T : translater selon l'axe 0x\n");
    printf("x : sortie (exit) \n"); 
   case 'f': 
    glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
