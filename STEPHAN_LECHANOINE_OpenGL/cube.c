@@ -119,10 +119,8 @@ void display() {
  //rotation
  glRotatef(theta_x,1,0,0);
  glRotatef(theta_y,0,1,0);
- glRotatef(theta_z,0,0,1);
- glTranslatef(x0,0,0);
- //glLoadIdentity();
- glRotatef(theta_y_local,0,1,0);
+ glRotatef(theta_z,0,0,1);  case 'm':
+   theta_y_local=1.0;
  
  cube(size);
  glutSwapBuffers();
