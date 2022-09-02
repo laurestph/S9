@@ -1,0 +1,56 @@
+Tests
+=====
+1) Se deplacer sous le repertoire des tutoriaux de Nate ROBINS :
+--> cd /home/TP/modules/sujets/REV/ROBINS/tutors/
+Lancer et tester les executables :
+--> transformation 
+--> projection
+2) Se deplacer sous le repertoire des exemples du cours OpenGL :
+--> cd /home/TP/modules/sujets/REV/Exemples/OpenGL
+Lancer et tester les executables :
+--> carre
+--> cube
+--> ...
+
+Initia(lisa)tion
+================
+1) Copier le repertoire du sujet de labos :
+  - /home/TP/modules/sujets/REV/OpenGL
+chez vous en le renommant Dupond_Dupont_OpenGL (si vos noms sont Dupond, Dupont):
+--> cp -r /home/TP/modules/sujets/REV/OpenGL $HOME/chemin_acces_repertoire_REV_OpenGL/Dupond_Dupont_OpenGL
+
+2) Lancer la commande make :
+--> make clean
+--> make
+Tester les executables (carre,cube,modeles ...)
+--> carre
+--> cube
+--> ...
+
+A FAIRE
+========
+A partir de l'application cube.c mettre en place 
+
+1) les interactions clavier :
+ - faire tourner le cube autour des trois axes
+ - deplacer le cube sur l'axe Ox 
+ - faire tourner le cube autour du centre de repere de scène dans le plan (Oxz)
+ - faire tourner le cube lui-même autour de l'axe Oy
+2) une interaction clavier pour :
+- lancer une animation des rotations précédentes sans interaction utilisateur
+- stopper cette animation
+
+Archivage
+=========
+Se déplacer sur le repertoire parent :
+--> cd ..
+Creer une archive Dupond_Dupont_OpenGL.tgz du repertoire Dupond_Dupont_OpenGL/  :
+--> tar zcvf Dupond_Dupont_OpenGL.tgz Dupond_Dupont_OpenGL/
+Deposer cette archive sous le repertoire de rendu de travail  : 
+--> cp Dupond_Dupont_OpenGL.tgz /home/TP/TPrendu/nedelec/REV/OpenGL
+
+Attention
+---------
+VERIFIER que l'archive n'est pas vide et qu'elle contient les fichiers de l'application : 
+--> tar ztvf Dupond_Dupont_OpenGL.tgz
+
