@@ -117,7 +117,7 @@ void display() {
  wcs(size+1);
  //rotation
  glRotatef(theta_x,1,0,0);
- glRotatef(theta_y,0,1,0);
+ glRotatef(theta_y,0,x0,0);
  glRotatef(theta_z,0,0,1);
  glTranslatef(x0,0,0);
  cube(size);
@@ -148,7 +148,9 @@ void keyboard(unsigned char key,int x,int y)
    printf("s/S : redimensionner l'objet \n"); 
    printf("y/Y : tourner l'objet autour de l'axe Oy\n"); 
    printf("d/g : tourner l'objet autour de l'axe Ox\n"); 
-   printf("z/Z : tourner l'objet autour de l'axe Ox\n"); 
+   printf("z/Z : tourner l'objet autour de l'axe Oz\n"); 
+   printf("o : faire tourner le cube autour du centre de repere de scène dans le plan (Oxz)\n");
+   printf("r : reset les rotations\n");  
    printf("x : sortie (exit) \n"); 
   case 'f': 
    glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
@@ -195,6 +197,14 @@ case 'd' :
    break;
   case 'T':
    x0-=1.0;
+   break;
+  case 'o':
+  theta_y+=1.0;
+   break;
+   case 'r':
+    theta_x=0;
+    theta_y=0;
+    theta_z=0;
    break;
   case 'x' :
    exit(0);
