@@ -14,6 +14,7 @@ static float size=0.5;
 static float theta_y=0.0;
 static float theta_x=0.0;
 static float theta_z=0.0;
+static float x0=0.0;
 
 void gl_init(void);
 void glut_init(int argc,char **argv);
@@ -118,6 +119,7 @@ void display() {
  glRotatef(theta_x,1,0,0);
  glRotatef(theta_y,0,1,0);
  glRotatef(theta_z,0,0,1);
+ glTranslatef(x0,0,0);
  cube(size);
  glutSwapBuffers();
 }
@@ -187,6 +189,12 @@ case 'd' :
    break;
   case 'Z' : 
    theta_z-=1.0;
+   break;
+  case 't':
+   x0+=1.0;
+   break;
+  case 'T':
+   x0-=1.0;
    break;
   case 'x' :
    exit(0);
