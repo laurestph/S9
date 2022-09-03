@@ -3,7 +3,7 @@ from sys import argv, exit
 from time import sleep
 from math import pi,cos,sin
 
-from models import create_axe, create_floor, create_stick, world_coordinate_system, square
+from models import *
 
 try:
   from OpenGL.GLUT import *
@@ -19,6 +19,7 @@ theta_y=0.0
 
 position=[0,0,0]
 orientation=0
+showAxes=True
 
 def display() :
 #  glClearColor(1.0,1.0,1.0,0.0);
@@ -38,7 +39,8 @@ def display() :
   world_coordinate_system(2*size)
   glRotatef(theta_y,0,1,0)
   glPushMatrix()
-  create_axe(0.05)
+  if(showAxes):
+    create_axe(0.05)
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
   square(size)
@@ -86,6 +88,10 @@ def on_keyboard_action(key,x,y) :
     theta_y+=1.0
   elif key==b'e' :
     exit(0)
+  elif key==b'w':
+    showAxes=False
+  elif key==b'W':
+    showAxes=True
   else :
     pass
   glutPostRedisplay()
