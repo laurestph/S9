@@ -27,7 +27,6 @@ def display() :
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT )
   glEnable(GL_DEPTH_TEST)
   glEnable(GL_CULL_FACE)
-
   glMatrixMode(GL_MODELVIEW)
   glLoadIdentity()
   camera=[1,1,1,0,0,0,0,1,0]
@@ -40,10 +39,11 @@ def display() :
   glRotatef(theta_y,0,1,0)
   glPushMatrix()
   if(showAxes):
-    create_axe(0.05)
+    create_axes(0.05)
+  create_floor(2,12)
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
-  square(size)
+  #square(size)
   glPopMatrix()
   glutSwapBuffers()
 
@@ -55,7 +55,7 @@ def reshape(width,height) :
   gluPerspective(60.0,width*1.0/height, 1.0, 10.0)
 
 def on_keyboard_action(key,x,y) :
-  global size,theta_y
+  global size,theta_y, showAxes
   if key==b'h':
     print("----------------------------------------\n")
     print("Documentation interaction  : Nom-Prenom \n") 

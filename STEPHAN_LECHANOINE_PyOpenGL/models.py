@@ -42,9 +42,9 @@ def create_stick(base,top,height,slices=10,stacks=5) :
   create_disk(0,base,slices,stacks)
   glPopMatrix()
 
-def create_axe(size,slices=10,stacks=5) :
+def create_axe(size,slices=10,stacks=5, R=0.0,B=0.0,G=0.0) :
   glPushMatrix()
-  glColor3f(1.0,0.0,0.0)
+  glColor3f(R,G,B)
   glRotatef(180,0,1,0)
   create_disk(0,size,slices,stacks)
   glPopMatrix()
@@ -52,6 +52,15 @@ def create_axe(size,slices=10,stacks=5) :
   glPushMatrix()
   glTranslatef(0,0,12*size)
   create_cone(size*1.5,4*size,slices,stacks)
+  glPopMatrix()
+
+def create_axes(tailleAxe):
+  glPushMatrix()
+  create_axe(tailleAxe, B=1)
+  glRotatef(90,0,1,0)
+  create_axe(tailleAxe, R=1)
+  glRotatef(-90,1,0,0)
+  create_axe(tailleAxe, G=1)
   glPopMatrix()
 
 def create_cone(base,height,slices=10,stacks=5) :
