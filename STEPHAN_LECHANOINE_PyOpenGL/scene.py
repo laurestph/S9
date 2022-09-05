@@ -20,6 +20,9 @@ theta_y=0.0
 position=[0,0,0]
 orientation=0
 showAxes=True
+xC=1
+yC=1
+zC=1
 
 def display() :
 #  glClearColor(1.0,1.0,1.0,0.0);
@@ -29,7 +32,7 @@ def display() :
   glEnable(GL_CULL_FACE)
   glMatrixMode(GL_MODELVIEW)
   glLoadIdentity()
-  camera=[1,1,1,0,0,0,0,1,0]
+  camera=[xC,yC,zC,0,0,0,0,0,0]
 #  camera=[0,0,2,0,0,0,0,1,0]
   gluLookAt(camera[0],camera[1],camera[2], 
             camera[3],camera[4],camera[5],
@@ -43,7 +46,7 @@ def display() :
   create_floor(2,12)
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
-  #square(size)
+  square(size)
   glPopMatrix()
   glutSwapBuffers()
 
@@ -55,7 +58,7 @@ def reshape(width,height) :
   gluPerspective(60.0,width*1.0/height, 1.0, 10.0)
 
 def on_keyboard_action(key,x,y) :
-  global size,theta_y, showAxes
+  global size,theta_y, showAxes,xC,yC,zC
   if key==b'h':
     print("----------------------------------------\n")
     print("Documentation interaction  : Nom-Prenom \n") 
@@ -67,6 +70,8 @@ def on_keyboard_action(key,x,y) :
     print("c/C : afficher les faces CW/CCW \n")
     print("r/R : redimensionner l'objet \n")
     print("y/Y : tourner l'objet autour de l'axe Oy\n")
+    print("m/M : cacher/afficher axes\n")
+    print("z/s : zoom/dé-zoom ")
     print("e : sortie (exit) \n")
   elif key==b'a':
     glPolygonMode(GL_FRONT_AND_BACK,GL_LINE)
@@ -92,6 +97,18 @@ def on_keyboard_action(key,x,y) :
     showAxes=False
   elif key==b'W':
     showAxes=True
+  elif key==b'z':
+    xC-=0.1
+    yC-=0.1
+    zC-=0.1
+  elif key==b's':
+    xC+=0.1
+    yC+=0.1
+    zC+=0.1
+  elif key==b'q':
+    pass
+  elif key==b'd':
+    pass
   else :
     pass
   glutPostRedisplay()
