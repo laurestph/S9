@@ -4,6 +4,8 @@ from time import sleep
 from math import pi,cos,sin
 
 from models import *
+from car import *
+
 
 try:
   from OpenGL.GLUT import *
@@ -30,17 +32,18 @@ def display() :
   glMatrixMode(GL_MODELVIEW)
   glLoadIdentity()
   camera=[1,1,1,0,0,0,0,1,0]
-#  camera=[0,0,2,0,0,0,0,1,0]
+  #camera=[0,0,2,0,0,0,0,1,0]
   gluLookAt(camera[0],camera[1],camera[2], 
             camera[3],camera[4],camera[5],
             camera[6],camera[7],camera[8])
-#  glutWireCube(1)
+  #glutWireCube(1)
   world_coordinate_system(2*size)
   glRotatef(theta_y,0,1,0)
   glPushMatrix()
   if(showAxes):
     create_axes(0.05)
   create_floor(2,12)
+  car(1)
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
   #square(size)
