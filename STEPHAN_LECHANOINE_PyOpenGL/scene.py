@@ -41,8 +41,8 @@ def display() :
   gluLookAt(camera[0],camera[1],camera[2], 
             camera[3],camera[4],camera[5],
             camera[6],camera[7],camera[8])
-  #glutWireCube(1)
-  world_coordinate_system(2*size)
+#   #glutWireCube(1)
+  # world_coordinate_system(2*size)
   glRotatef(theta_y,0,1,0)
   glPushMatrix()
   if(showAxes):

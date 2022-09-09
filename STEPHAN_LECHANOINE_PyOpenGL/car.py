@@ -10,12 +10,16 @@ except:
 from models import *
 
 def car(size,slices=10,stacks=5):
-  # create_roue(size)
+    xcar = 0.5
+    ycar = 0.2
+    # create_roue(size)
     glPushMatrix()
-    glTranslatef(0.5,0.2,0)
+    glTranslatef(xcar,ycar,0)
     glPushMatrix()
-    glTranslatef(0,0.1,0)
+    glRotatef(90,0,1,0)
+    glTranslatef(xcar*size*0.05,0,0)
     create_roue(size*0.5)
+    #voiture
     glPopMatrix()
     glColor3f(0.5,0.2,0.6)
     glPushMatrix()
@@ -33,10 +37,10 @@ def create_roue(size):
     sizeroue = size*0.6
     glColor3f(0.0,0.0,0.0)
     glutSolidTorus(sizeroue*0.05,sizeroue*0.1,int(sizeroue*100),int(sizeroue*100))
-    print("create_roue")
+    #print("create_roue")
 
 def create_boulons(size):
     glColor3f(0.2,0.6,0.0)
     create_cylinder(size*0.1,size*0.1,size*0.3)
-    print("create_boulons")
+    #print("create_boulons")
 
