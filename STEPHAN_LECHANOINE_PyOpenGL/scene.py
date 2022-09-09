@@ -34,7 +34,7 @@ def display() :
   glEnable(GL_CULL_FACE)
   glMatrixMode(GL_MODELVIEW)
   glLoadIdentity()
-  camera=[xC,yC,zC,0,0,0,0,0,0]
+  camera=[xC,yC,zC,0,0,0,0,1,0]
 #  camera=[0,0,2,0,0,0,0,1,0]
   gluLookAt(camera[0],camera[1],camera[2], 
             camera[3],camera[4],camera[5],
