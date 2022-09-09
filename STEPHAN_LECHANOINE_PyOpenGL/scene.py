@@ -25,6 +25,7 @@ showAxes=True
 xC=1
 yC=1
 zC=1
+angleCam=math.pi/4.
 
 def display() :
 #  glClearColor(1.0,1.0,1.0,0.0);
@@ -61,7 +62,7 @@ def reshape(width,height) :
   gluPerspective(60.0,width*1.0/height, 1.0, 10.0)
 
 def on_keyboard_action(key,x,y) :
-  global size,theta_y, showAxes,xC,yC,zC
+  global size,theta_y, showAxes,xC,yC,zC, angleCam
   if key==b'h':
     print("----------------------------------------\n")
     print("Documentation interaction  : Nom-Prenom \n") 
@@ -75,6 +76,7 @@ def on_keyboard_action(key,x,y) :
     print("y/Y : tourner l'objet autour de l'axe Oy\n")
     print("m/M : cacher/afficher axes\n")
     print("z/s : zoom/dé-zoom ")
+    print("q/d : rotation de la caméra")
     print("e : sortie (exit) \n")
   elif key==b'a':
     glPolygonMode(GL_FRONT_AND_BACK,GL_LINE)
@@ -109,13 +111,21 @@ def on_keyboard_action(key,x,y) :
     yC+=0.1
     zC+=0.1
   elif key==b'q':
-    pass
+    angleCam+=.1
+    calculRotation()
   elif key==b'd':
-    pass
+    angleCam-=.1
+    calculRotation()
   else :
     pass
   glutPostRedisplay()
 
+
+def calculRotation():
+  global xC,zC
+  xC=math.cos(angleCam)
+  zC=math.sin(angleCam)
+  
 def on_special_key_action(key,x,y) :
   print("on_special_key_action(key,x,y)")
 
