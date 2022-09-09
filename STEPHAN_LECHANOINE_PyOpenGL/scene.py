@@ -25,7 +25,8 @@ showAxes=True
 xC=1
 yC=1
 zC=1
-angleCam=math.pi/4.
+r=math.sqrt(xC**2+zC**2)
+angleCam=math.pi/4.               #pour avoir une position par défault à 1,1,1 avec la caméra regardant le milieu de la scène
 
 def display() :
 #  glClearColor(1.0,1.0,1.0,0.0);
@@ -62,7 +63,7 @@ def reshape(width,height) :
   gluPerspective(60.0,width*1.0/height, 1.0, 10.0)
 
 def on_keyboard_action(key,x,y) :
-  global size,theta_y, showAxes,xC,yC,zC, angleCam
+  global size,theta_y, showAxes,xC,yC,zC, angleCam, r
   if key==b'h':
     print("----------------------------------------\n")
     print("Documentation interaction  : Nom-Prenom \n") 
@@ -103,13 +104,11 @@ def on_keyboard_action(key,x,y) :
   elif key==b'W':
     showAxes=True
   elif key==b'z':
-    xC-=0.1
-    yC-=0.1
-    zC-=0.1
+    r-=.1
+    calculRotation()
   elif key==b's':
-    xC+=0.1
-    yC+=0.1
-    zC+=0.1
+    r+=.1
+    calculRotation()
   elif key==b'q':
     angleCam+=.1
     calculRotation()
@@ -122,9 +121,9 @@ def on_keyboard_action(key,x,y) :
 
 
 def calculRotation():
-  global xC,zC
-  xC=math.cos(angleCam)
-  zC=math.sin(angleCam)
+  global xC,zC,r  
+  xC=r*math.cos(angleCam)
+  zC=r*math.sin(angleCam)
   
 def on_special_key_action(key,x,y) :
   print("on_special_key_action(key,x,y)")
