@@ -10,8 +10,8 @@ except:
 from models import *
 
 def car(size,slices=10,stacks=5):
-    xcar = -0.5
-    ycar = 0.2
+    xcar = 0.
+    ycar = 0.
 
     test = False
 
