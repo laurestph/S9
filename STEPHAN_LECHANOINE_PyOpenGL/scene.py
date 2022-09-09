@@ -21,7 +21,7 @@ theta_y=0.0
 
 position=[0,0,0]
 orientation=0
-showAxes=True
+showAxes=False
 xC=1
 yC=1
 zC=1
@@ -51,7 +51,7 @@ def display() :
   
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
-  car(1)
+  car(4)
   #square(size)
   glPopMatrix()
   glutSwapBuffers()

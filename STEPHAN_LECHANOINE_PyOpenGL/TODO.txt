@@ -44,11 +44,11 @@ autour de la scene  dans le plan Oxz.
 2) Création du véhicule
 ------------------------
 Créer un modèle de  véhicule (car()) qui soit redimensionnable (size) 
-   a) créer une carroserie de voiture (disque + cylindre + cone)
-   b) positionner la voiture dans la scène 
-   c) créer une roue de voiture (utiliser un tore OpenGL)
-   d) créer des boulons (cylindre + disk) sur chaque roue
-   e) créer et positionner 4 roues avec leurs boulons sur la voiture
+   + a) créer une carroserie de voiture (disque + cylindre + cone)
+   + b) positionner la voiture dans la scène 
+   + c) créer une roue de voiture (utiliser un tore OpenGL)
+   - d) créer des boulons (cylindre + disk) sur chaque roue
+   = e) créer et positionner 4 roues avec leurs boulons sur la voiture
 
 3) Manipulation du véhicule
 ---------------------------

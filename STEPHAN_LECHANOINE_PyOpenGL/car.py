@@ -10,8 +10,10 @@ except:
 from models import *
 
 def car(size,slices=10,stacks=5):
-    xcar = 0.5
+    xcar = -0.5
     ycar = 0.2
+
+    test = True
 
     base_cylindre = size*0.05
     height_cylindre= size*0.25
@@ -45,33 +47,34 @@ def car(size,slices=10,stacks=5):
     glTranslatef(0,0,height_cylindre)
     create_cone(size*0.07,2*base_cylindre,slices,stacks)
     glPopMatrix()
-
     glPopMatrix()
-    
+    if (test):
+      glTranslatef(0.2,0.3,0)
+      create_roue(4)
 
 def create_roue(size):
-    create_jante(size*0.25)
     sizeroue = size*0.6
+    create_boulons(size)
+    create_jante(sizeroue*0.1)
     glColor3f(0.0,0.0,0.0)
-    glutSolidTorus(sizeroue*0.05,sizeroue*0.1,int(sizeroue*100),int(sizeroue*100))
+    glutSolidTorus(sizeroue*0.025,sizeroue*0.1,int(sizeroue*100),int(sizeroue*100))
 
 def create_boulons(size):
     glPushMatrix()
-    glColor3f(0.2,0.6,0.0)
-    create_cylinder(size*0.01,size*0.01,size*0.001)
-    glTranslatef(0,0,size*0.01)
+
+    # glColor3f(0.2,0.6,0.0)
+    # create_cylinder(size*0.01,size*0.01,size*0.001)
+    glColor3f(0.4,0.2,0.0)
+    glTranslatef(size*0.02,size*0.02,0.01)
     create_disk(0,size*0.01)
     glPopMatrix()
     #print("create_boulons")
 
 def create_jante(size):
     glPushMatrix()
-    glColor3f(1,1,1)
-    glPushMatrix()
-    create_boulons(size)
-    glPopMatrix()
-    glPushMatrix()
+    glColor3f(0,0.7,0.2)
+    create_disk(0,size)
+    glRotatef(180,0,1,0)
     glTranslatef(0,0,size*0.05)
-    create_disk(0,size*0.1)
-    glPopMatrix()
+    create_disk(0,size)
     glPopMatrix()
