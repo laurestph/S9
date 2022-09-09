@@ -13,7 +13,7 @@ def car(size,slices=10,stacks=5):
     xcar = -0.5
     ycar = 0.2
 
-    test = True
+    test = False
 
     base_cylindre = size*0.05
     height_cylindre= size*0.25
@@ -60,14 +60,27 @@ def create_roue(size):
     glutSolidTorus(sizeroue*0.025,sizeroue*0.1,int(sizeroue*100),int(sizeroue*100))
 
 def create_boulons(size):
-    glPushMatrix()
+    boulons = 4 
+    angle = 360./boulons
 
+   
     # glColor3f(0.2,0.6,0.0)
-    # create_cylinder(size*0.01,size*0.01,size*0.001)
     glColor3f(0.4,0.2,0.0)
-    glTranslatef(size*0.02,size*0.02,0.01)
-    create_disk(0,size*0.01)
-    glPopMatrix()
+    for i in range(boulons):
+      glPushMatrix()
+      glRotate(angle*i,0,0,1)
+      glPushMatrix()
+      glRotatef(180,0,1,0)
+      glTranslatef(0.05*(size/2),0,size*0.005)
+      create_disk(0,size*0.01)
+      glPopMatrix()
+      glPushMatrix()
+      glTranslatef(0.05*(size/2),0,size*0.005)
+      create_disk(0,size*0.01)
+      glPopMatrix()
+      glPopMatrix()
+   
+   
     #print("create_boulons")
 
 def create_jante(size):

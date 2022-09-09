@@ -51,7 +51,7 @@ def display() :
   
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
-  car(4)
+  car(1.5)
   #square(size)
   glPopMatrix()
   glutSwapBuffers()
