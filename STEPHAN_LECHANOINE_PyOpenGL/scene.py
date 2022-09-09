@@ -69,7 +69,7 @@ def on_keyboard_action(key,x,y) :
     print("----------------------------------------\n")
     print("Documentation interaction  : Nom-Prenom \n") 
     print("----------------------------------------\n") 
-    print("h : afficher cette aide \n");
+    print("h : afficher cette aide \n")
     print("a : afficher les aretes \n")
     print("f : afficher les facettes \n")
     print("p : afficher les sommets \n")

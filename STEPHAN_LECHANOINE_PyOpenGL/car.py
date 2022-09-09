@@ -15,6 +15,7 @@ def car(size,slices=10,stacks=5):
     glTranslatef(0.5,0.2,0)
     glPushMatrix()
     glTranslatef(0,0.1,0)
+    create_jante(size*0.25)
     create_roue(size*0.5)
     glPopMatrix()
     glColor3f(0.5,0.2,0.6)
@@ -27,6 +28,7 @@ def car(size,slices=10,stacks=5):
     glTranslatef(0,0,size*0.25)
     create_cone(size*0.07,2*size*0.05,slices,stacks)
     glPopMatrix()
+
     glPopMatrix()
 
 def create_roue(size):
@@ -36,7 +38,22 @@ def create_roue(size):
     #print("create_roue")
 
 def create_boulons(size):
+    glPushMatrix()
     glColor3f(0.2,0.6,0.0)
-    create_cylinder(size*0.1,size*0.1,size*0.3)
+    create_cylinder(size*0.01,size*0.01,size*0.001)
+    glTranslatef(0,0,size*0.01)
+    create_disk(0,size*0.01)
+    glPopMatrix()
     #print("create_boulons")
 
+def create_jante(size):
+    glPushMatrix()
+    glColor3f(1,1,1)
+    glPushMatrix()
+    create_boulons(size)
+    glPopMatrix()
+    glPushMatrix()
+    glTranslatef(0,0,size*0.05)
+    create_disk(0,size*0.1)
+    glPopMatrix()
+    glPopMatrix()
