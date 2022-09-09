@@ -16,12 +16,12 @@ except:
   print ("Error: PyOpenGL not installed properly !!")
   sys.exit()
 
-size=0.5
+size=1.5
 theta_y=0.0
 
 position=[0,0,0]
 orientation=0
-showAxes=False
+showAxes=True
 xC=1
 yC=1
 zC=1
@@ -46,12 +46,12 @@ def display() :
   glRotatef(theta_y,0,1,0)
   glPushMatrix()
   if(showAxes):
-    create_axes(0.05)
+    create_axes(size*0.01)
   create_floor(2,12)
   
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
-  car(4)
+  car(size)
   #square(size)
   glPopMatrix()
   glutSwapBuffers()
