@@ -48,9 +48,10 @@ def display() :
   if(showAxes):
     create_axes(0.05)
   create_floor(2,12)
-  car(1)
+  
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
+  car(1)
   #square(size)
   glPopMatrix()
   glutSwapBuffers()
@@ -75,7 +76,7 @@ def on_keyboard_action(key,x,y) :
     print("c/C : afficher les faces CW/CCW \n")
     print("r/R : redimensionner l'objet \n")
     print("y/Y : tourner l'objet autour de l'axe Oy\n")
-    print("m/M : cacher/afficher axes\n")
+    print("w/W : cacher/afficher axes\n")
     print("z/s : zoom/dé-zoom ")
     print("q/d : rotation de la caméra")
     print("e : sortie (exit) \n")

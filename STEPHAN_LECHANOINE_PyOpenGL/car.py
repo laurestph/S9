@@ -33,10 +33,10 @@ def create_roue(size):
     sizeroue = size*0.6
     glColor3f(0.0,0.0,0.0)
     glutSolidTorus(sizeroue*0.05,sizeroue*0.1,int(sizeroue*100),int(sizeroue*100))
-    print("create_roue")
+    #print("create_roue")
 
 def create_boulons(size):
     glColor3f(0.2,0.6,0.0)
     create_cylinder(size*0.1,size*0.1,size*0.3)
-    print("create_boulons")
+    #print("create_boulons")
 
