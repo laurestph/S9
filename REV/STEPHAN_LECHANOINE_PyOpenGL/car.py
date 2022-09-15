@@ -9,33 +9,44 @@ except:
 
 from models import *
 
-def car(size,slices=10,stacks=5):
-    xcar = 0.
-    ycar = 0.
 
-    test = False
-
+def roues_avant(size):
     base_cylindre = size*0.05
     height_cylindre= size*0.25
-
-    #voiture
-    glPushMatrix()
-    glTranslatef(xcar,ycar,0)
-
     #roues
     glPushMatrix()
-
     glTranslatef(base_cylindre,-base_cylindre*0.2,height_cylindre-size*0.05)
     glRotatef(90,0,1,0)
     create_roue(size*0.5)
+    glTranslatef(height_cylindre-size*0.1,0,0)
+    #create_roue(size*0.5)
+    glTranslatef(0,0,-2*base_cylindre)
+    #create_roue(size*0.5)
+    glTranslatef(-height_cylindre+size*0.1,0,0)
+    create_roue(size*0.5)
+    glPopMatrix()
+
+def roues_arriere(size):
+    base_cylindre = size*0.05
+    height_cylindre= size*0.25
+    #roues arriere
+    glPushMatrix()
+    glTranslatef(base_cylindre,-base_cylindre*0.2,height_cylindre-size*0.05)
+    glRotatef(90,0,1,0)
+    #create_roue(size*0.5)
     glTranslatef(height_cylindre-size*0.1,0,0)
     create_roue(size*0.5)
     glTranslatef(0,0,-2*base_cylindre)
     create_roue(size*0.5)
     glTranslatef(-height_cylindre+size*0.1,0,0)
-    create_roue(size*0.5)
+    #create_roue(size*0.5)
     glPopMatrix()
 
+def carrosserie(size,slices=10,stacks=5):
+
+    base_cylindre = size*0.05
+    height_cylindre= size*0.25
+    
     #carrosserie
     glColor3f(0.5,0.2,0.6)
     glPushMatrix()
@@ -47,10 +58,7 @@ def car(size,slices=10,stacks=5):
     glTranslatef(0,0,height_cylindre)
     create_cone(size*0.07,2*base_cylindre,slices,stacks)
     glPopMatrix()
-    glPopMatrix()
-    if (test):
-      glTranslatef(0.2,0.3,0)
-      create_roue(4)
+  
 
 def create_roue(size):
     sizeroue = size*0.6
@@ -80,7 +88,7 @@ def create_boulons(size):
       glPopMatrix()
       glPopMatrix()
    
-   
+  
     #print("create_boulons")
 
 def create_jante(size):
