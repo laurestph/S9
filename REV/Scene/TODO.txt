@@ -1,0 +1,50 @@
+Initia(lisa)tion
+================
+Tester sous l'interpreteur python
+   - python scene.py 
+
+Exercices
+=========
+Récupérer le travail de la première séance de labo pour créer un véhicule que l'on pourra déplacer dans le plan Oxz.
+
+On fournira une "aide en ligne" (touche h du clavier) dans lequel apparaitra sur le terminal :
+    - les NOM-Prénom des concepteurs de l'application
+    - les touches d'interaction commentées
+
+Première version
+----------------
+   1- scene.py : contrôler les déplacements dans le plan Oxy
+      1-1 la carosserie sera translatée avec les roues et boulons dans une direction
+      1-2 les roues et les boulons tourneront en même temps
+      1-3 faire pivoter les roues lorsqu'on change d'orientation
+      1-4 repositionner les roues correctement lorsque le véhicule avance ou recule
+   2- models.py : création du véhicule (class Car)
+      2-1 create_wheel() : un tore avec des boulons cylindriques
+      2-2 create() : la carrosserie (create_axe()) avec les 4 roues
+   3- intégrer un repère de scène (world_coordinate_system())
+      3-1 chaque axe est défini par un cylindre et un cone
+      3-2 associer une couleur à chaque axe (Ox:rouge, Oy:vert, Oz:bleu) 
+      3-3 rendre visible/invisible ce repère
+
+Deuxième version
+----------------
+   intégrer un "bras articulé" sur la voiture pour aller pointer un objet dans la scène
+
+CONSIGNES
+=========
+En fin de chaque séance (17:30 au plus tard), deposer une archive de version : 
+
+      cp Dupond-Dupont_Scene.tgz /home/TP/TPrendu/nedelec/REV/Scene
+
+genere par la commande : 
+
+      tar zcvf Dupond-Dupont_Scene.tgz Dupond-Dupont_Scene/
+
+Cette archive contiendra  les fichiers suivants :
+   1- models.py
+   2- models.pyc
+   3- scene.py
+   4- TODO.txt
+
+
+

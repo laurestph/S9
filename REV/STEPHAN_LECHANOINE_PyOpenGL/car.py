@@ -14,6 +14,9 @@ def car(size,rot_roue=0,dir_roue=0,slices=10,stacks=5):
     base_cylindre = size*0.05
     height_cylindre= size*0.25
 
+    glPushMatrix()
+    glTranslatef(0,0,-height_cylindre/2)  #pour avoir la voiture au milieu du repère
+
     #carrosserie
     glColor3f(0.5,0.2,0.6)
     glPushMatrix()
@@ -49,6 +52,8 @@ def car(size,rot_roue=0,dir_roue=0,slices=10,stacks=5):
     glPopMatrix()
 
     glPopMatrix()
+    glPopMatrix()
+
     glPopMatrix()
 
 def create_roue(size):
