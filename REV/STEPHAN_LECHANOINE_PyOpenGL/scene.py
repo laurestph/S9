@@ -52,17 +52,9 @@ def display() :
   
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
-  carrosserie(size)
-  glPushMatrix()
-  glRotatef(rot_roue,1,0,0)
-  roues_avant(size)
-  glPopMatrix()
-  glPushMatrix()
-  glRotatef(rot_roue,1,0,0)
-  roues_arriere(size)
-  glPopMatrix()
-  #square(size)
-  glPopMatrix()
+  car(size,rot_roue)
+  
+
   glutSwapBuffers()
 
 def reshape(width,height) :
@@ -143,11 +135,11 @@ def on_special_key_action(key,x,y) :
     if key ==  GLUT_KEY_UP :
         position[0]+=0.1*size*sin(orientation*pi/180.0)
         position[2]+=0.1*size*cos(orientation*pi/180.0)
-        rot_roue+=5
+        rot_roue+=20
     elif  key ==  GLUT_KEY_DOWN :
         position[0]-=0.1*size*sin(orientation*pi/180.0)
         position[2]-=0.1*size*cos(orientation*pi/180.0)
-        rot_roue-=5
+        rot_roue-=20
     elif key ==  GLUT_KEY_LEFT :
         orientation+=5
     elif  key ==  GLUT_KEY_RIGHT :
