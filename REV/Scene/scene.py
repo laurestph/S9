@@ -172,13 +172,17 @@ class Scene :
     if key ==  GLUT_KEY_UP :
         position[0]+=0.1*self.size*sin(orientation*pi/180.0)
         position[2]+=0.1*self.size*cos(orientation*pi/180.0)
+        self.model.rot_roue+=10
     elif  key ==  GLUT_KEY_DOWN :
         position[0]-=0.1*self.size*sin(orientation*pi/180.0)
         position[2]-=0.1*self.size*cos(orientation*pi/180.0)
+        self.model.rot_roue-=10
     elif key ==  GLUT_KEY_LEFT :
         orientation+=5
+        
     elif  key ==  GLUT_KEY_RIGHT :
         orientation-=5
+        
     else :
         pass
     self.model.set_position(position)

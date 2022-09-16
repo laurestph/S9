@@ -83,10 +83,11 @@ def create_floor(size,tiles=10) :
         glPopMatrix()
 
 class Model :
-  def __init__(self,size=1.0) :
+  def __init__(self,size=.01) :
     self.size=size
     self.orientation=0.0
     self.position=[0.0,0.0,0.0]
+    self.rot_roue=0
   def set_size(self,size) :
     self.size=size
   def get_size(self) :
@@ -109,28 +110,35 @@ class Car(Model) :
     # glutWireCube(self.size)
     # create_arrow(self.size/6.0,self.size/6.0,self.size)
     glPopMatrix()
+    
     # roue av droite
     glPushMatrix()
     glRotatef(90,0,1,0)
     glTranslatef(-1.2,0,-1)
+    glRotatef(self.rot_roue,0,0,1)
     self.create_wheel()
     glPopMatrix()
     # roue av gauche
     glPushMatrix()
     glRotatef(90,0,1,0)
     glTranslatef(-1.2,0,1)
+    glRotatef(self.rot_roue,0,0,1)
     self.create_wheel()
     glPopMatrix()
+
+
     # roue ar droite
     glPushMatrix()
     glRotatef(90,0,1,0)
     glTranslatef(1.2,0,-1)
+    glRotatef(self.rot_roue,0,0,1)
     self.create_wheel()
     glPopMatrix()
     # roue ar gauche
     glPushMatrix()
     glRotatef(90,0,1,0)
     glTranslatef(1.2,0,1)
+    glRotatef(self.rot_roue,0,0,1)
     self.create_wheel()
     glPopMatrix()
 
@@ -145,7 +153,6 @@ class Car(Model) :
       glPopMatrix()
 
   def create_carrosserie(self):
-    print("test")
     base_cylindre = self.size*0.05
     height_cylindre= self.size*0.25
     slices=10
