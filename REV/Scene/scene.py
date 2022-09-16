@@ -50,6 +50,8 @@ class Scene :
     vupx,vupy,vupz=self.camera[6],self.camera[7],self.camera[8]
     gluLookAt(posx,posy,posz,dirx,diry,dirz,vupx,vupy,vupz)
     glRotatef(self.rotation_y,0,1,0)
+    #axes
+    create_axes(self.size*0.01)
     # le sol
     create_floor(10*self.size) 
     # l'objet à saisir
@@ -173,16 +175,18 @@ class Scene :
         position[0]+=0.1*self.size*sin(orientation*pi/180.0)
         position[2]+=0.1*self.size*cos(orientation*pi/180.0)
         self.model.rot_roue+=10
+        self.model.dir_roue=0
     elif  key ==  GLUT_KEY_DOWN :
         position[0]-=0.1*self.size*sin(orientation*pi/180.0)
         position[2]-=0.1*self.size*cos(orientation*pi/180.0)
         self.model.rot_roue-=10
+        self.model.dir_roue=0
     elif key ==  GLUT_KEY_LEFT :
         orientation+=5
-        
+        self.model.dir_roue=25
     elif  key ==  GLUT_KEY_RIGHT :
         orientation-=5
-        
+        self.model.dir_roue=-25
     else :
         pass
     self.model.set_position(position)
