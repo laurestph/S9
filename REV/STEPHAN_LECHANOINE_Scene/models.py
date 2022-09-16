@@ -166,6 +166,10 @@ class Car(Model) :
     self.create_wheel()
     glPopMatrix()
 
+
+    glTranslatef(0,0,-1.8)
+    self.create_carrosserie()
+
   def create_wheel(self,boulons=5) :
     glutWireCube(0.2*self.size)
     angle=360.0/boulons
@@ -177,8 +181,8 @@ class Car(Model) :
       glPopMatrix()
 
   def create_carrosserie(self):
-    base_cylindre = self.size*0.05
-    height_cylindre= self.size*0.25
+    base_cylindre = self.size*0.05*10
+    height_cylindre= self.size*0.25*8
     slices=10
     stacks=5
     glColor3f(0.5,0.2,0.6)
@@ -189,7 +193,7 @@ class Car(Model) :
     create_cylinder(base_cylindre,base_cylindre,height_cylindre,slices,stacks)
     glPushMatrix()
     glTranslatef(0,0,height_cylindre)
-    create_cone(self.size*0.07,2*base_cylindre,slices,stacks)
+    create_cone(base_cylindre,2*base_cylindre,slices,stacks)
     glPopMatrix()
 
 
