@@ -10,10 +10,11 @@ except:
 from models import *
 
 
-def car(size,rot_roue=0,dir_roue=0,slices=10,stacks=5):
+def car(size,rot_roue=0,dir_roue=0,rot_grue=0,slices=10,stacks=5):
     base_cylindre = size*0.05
     height_cylindre= size*0.25
-
+    theta = rot_grue
+    
     glPushMatrix()
     glTranslatef(0,0,-height_cylindre/2)  #pour avoir la voiture au milieu du repère
 
@@ -52,7 +53,10 @@ def car(size,rot_roue=0,dir_roue=0,slices=10,stacks=5):
     glPopMatrix()
 
     glPopMatrix()
+    grue(size, theta)
     glPopMatrix()
+
+   
 
     glPopMatrix()
 
@@ -95,3 +99,52 @@ def create_jante(size):
     glTranslatef(0,0,size*0.05)
     create_disk(0,size)
     glPopMatrix()
+
+
+def grue(size,theta,slices=10,stacks=5):
+
+  base_cylindre = size*0.025
+  height_cylindre= size*0.25/2 #cylindre carrosserie
+  size_sphere = size*0.03
+  glPushMatrix()
+  glColor3f(0.2,0.5,0.7)
+  glTranslatef(0,size*0.05,height_cylindre/2)
+  create_cylinder(base_cylindre,base_cylindre,height_cylindre,slices,stacks)
+  glPushMatrix()
+
+  glRotatef(theta,0,0,1)
+
+  # #articulation 3
+  # glPushMatrix()
+  # glTranslatef(0,height_cylindre*2+size_sphere,height_cylindre/2)
+  # articulation(size_sphere,base_cylindre,height_cylindre,-90)
+  # glPopMatrix()
+
+  #articulation 2
+  glPushMatrix()
+  glTranslatef(0,height_cylindre+size_sphere+base_cylindre,height_cylindre/2)
+  articulation(size_sphere,base_cylindre,height_cylindre,-90+theta)
+  glPopMatrix()
+
+  #articulation 1
+  glPushMatrix()
+  glTranslatef(0,base_cylindre*2,height_cylindre/2)
+  articulation(size_sphere,base_cylindre,height_cylindre,-90)
+  glPopMatrix()
+
+  glPopMatrix()
+
+  glPopMatrix()
+
+def articulation(size,base_cylindre,height_cylindre,rotate=-90):
+  glPushMatrix()
+  glColor3f(0.9,0.5,0)
+  glPushMatrix()
+  glRotatef(rotate,1,0,0)
+  create_cylinder(base_cylindre*0.8,base_cylindre*0.8,height_cylindre)
+  glColor3f(0.1,0.9,0)
+  glPopMatrix()
+  create_sphere(size)
+
+  glPopMatrix()
+

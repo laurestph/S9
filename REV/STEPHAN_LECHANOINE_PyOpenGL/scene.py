@@ -29,6 +29,7 @@ r=math.sqrt(xC**2+zC**2)
 angleCam=math.pi/4.               #pour avoir une position par défault à 1,1,1 avec la caméra regardant le milieu de la scène
 rot_roue=0
 dir_roue=0
+rot_grue=0
 
 def display() :
 #  glClearColor(1.0,1.0,1.0,0.0);
@@ -53,7 +54,7 @@ def display() :
   
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
-  car(size,rot_roue,dir_roue)
+  car(size,rot_roue,dir_roue,rot_grue)
   
 
   glutSwapBuffers()
@@ -66,7 +67,7 @@ def reshape(width,height) :
   gluPerspective(60.0,width*1.0/height, 1.0, 10.0)
 
 def on_keyboard_action(key,x,y) :
-  global size,theta_y, showAxes,xC,yC,zC, angleCam, r
+  global size,theta_y, showAxes,xC,yC,zC, angleCam, r, rot_grue
   if key==b'h':
     print("----------------------------------------\n")
     print("Documentation interaction  : Nom-Prenom \n") 
@@ -81,6 +82,7 @@ def on_keyboard_action(key,x,y) :
     print("w/W : cacher/afficher axes\n")
     print("z/s : zoom/dé-zoom ")
     print("q/d : rotation de la caméra")
+    print("g/G : rotation grue")
     print("e : sortie (exit) \n")
   elif key==b'a':
     glPolygonMode(GL_FRONT_AND_BACK,GL_LINE)
@@ -118,6 +120,10 @@ def on_keyboard_action(key,x,y) :
   elif key==b'd':
     angleCam-=.1
     calculRotation()
+  elif key==b'g':
+    rot_grue+=1
+  elif key==b'G':
+    rot_grue-=1
   else :
     pass
   glutPostRedisplay()
