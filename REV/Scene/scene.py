@@ -66,6 +66,8 @@ class Scene :
     glTranslatef(position[0],position[1],position[2])
     glRotatef(orientation,0,1,0)
     self.model.create()
+    # self.model.create_wheel()
+    self.model.create_carrosserie()
     glPopMatrix()
     glutSwapBuffers()
 

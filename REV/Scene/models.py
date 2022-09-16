@@ -101,17 +101,17 @@ class Model :
     return self.position
 
 class Car(Model) :
-  def __init__(self,size=1.0) :
+  def __init__(self,size=10) :
     Model.__init__(self,size)
 
   def create(self) :
     glPushMatrix()
-    glScalef(1,1,2)
-    glutWireCube(self.size)
-    create_arrow(self.size/6.0,self.size/6.0,self.size)
+    #glScalef(1,1,2)
+    # glutWireCube(self.size)
+    # create_arrow(self.size/6.0,self.size/6.0,self.size)
     glPopMatrix()
     # roue av droite
-    self.create_wheel(3)
+    # self.create_wheel(3)
     # roue av gauche
     # roue ar droite
     # roue ar gauche
@@ -125,6 +125,24 @@ class Car(Model) :
       glTranslatef(0.70*(self.size/2.0),0.0,0.0)
       glutWireCube(0.20*self.size)
       glPopMatrix()
+
+  def create_carrosserie(self):
+    print("test")
+    base_cylindre = self.size*0.05
+    height_cylindre= self.size*0.25
+    slices=10
+    stacks=5
+    glColor3f(0.5,0.2,0.6)
+    glPushMatrix()
+    glRotatef(180,0,1,0)
+    create_disk(0,base_cylindre,slices,stacks)
+    glPopMatrix()
+    create_cylinder(base_cylindre,base_cylindre,height_cylindre,slices,stacks)
+    glPushMatrix()
+    glTranslatef(0,0,height_cylindre)
+    create_cone(self.size*0.07,2*base_cylindre,slices,stacks)
+    glPopMatrix()
+
 
 
 class Crane(Model) :
