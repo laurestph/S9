@@ -10,7 +10,7 @@ except:
   print ("Error: PyOpenGL not installed properly !!")
   sys.exit()
 
-from models import create_wcs,create_floor,Car,Crane
+from models import create_axes, create_wcs,create_floor,Car,Crane
 
 def gl_init() :
 #  glClearColor(1.0,1.0,1.0,0.0);
@@ -41,6 +41,7 @@ class Scene :
     self.camera=[2,3,1,0,0,0,0,1,0]    
     self.perspective=[60.0,1.0,0.1,50.0]
     self.rotation_y=0.0
+    self.show_axes=True
   def display(self) :
     gl_init()
     glMatrixMode(GL_MODELVIEW)
@@ -50,8 +51,9 @@ class Scene :
     vupx,vupy,vupz=self.camera[6],self.camera[7],self.camera[8]
     gluLookAt(posx,posy,posz,dirx,diry,dirz,vupx,vupy,vupz)
     glRotatef(self.rotation_y,0,1,0)
-    #axes
-    create_axes(self.size*0.01)
+    # axes
+    if(self.show_axes):
+      create_axes(self.size*0.01)
     # le sol
     create_floor(10*self.size) 
     # l'objet à saisir
@@ -84,9 +86,9 @@ class Scene :
   def on_keyboard_action(self,key, x, y) :
     if key=='a':
       glutIdleFunc(scene.animation)
-    elif key=='A':
+    elif key==b'A':
       glutIdleFunc(None)
-    elif key=='h':
+    elif key==b'h':
       print("----------------------------------------") 
       print("Documentation interaction  : Nom-Prenom ") 
       print("h : afficher cette aide")
@@ -122,48 +124,48 @@ class Scene :
       print("----")
       print("...: ....")
      
-    elif key== 'b' :
+    elif key==b'b' :
       pass
-    elif key== 'B':
+    elif key==b'B':
       pass
-    elif key== 'g' :
+    elif key==b'g' :
       pass
-    elif key== 'G':
+    elif key==b'G':
       pass
-    elif key== 'e' :
+    elif key==b'e' :
       exit(0)   
-    elif key== 'f':
+    elif key==b'f':
       glPolygonMode(GL_FRONT_AND_BACK,GL_FILL)
-    elif key== 'F':
+    elif key==b'F':
       glPolygonMode(GL_FRONT_AND_BACK,GL_LINE)
-    elif key== 'c' :
+    elif key==b'c' :
       glFrontFace(GL_CW)
-    elif key== 'C' :
+    elif key==b'C' :
       glFrontFace(GL_CCW)
-    elif key== 's' :
+    elif key==b's' :
+      self.size+=0.1
+    elif key==b'S' :
+      self.size-=0.1
+    elif  key ==b'u' :
       pass
-    elif key== 'S' :
+    elif  key ==b'U' :
       pass
-    elif  key == 'u' :
+    elif  key ==b'v' :
       pass
-    elif  key == 'U' :
+    elif  key ==b'V' :
       pass
-    elif  key == 'v' :
-      pass
-    elif  key == 'V' :
-      pass
-    elif  key == 'n' :
+    elif  key ==b'n' :
       self.camera[2]=self.camera[2]-0.1
-    elif  key == 'N' :
+    elif  key ==b'N' :
       self.camera[2]=self.camera[2]+0.1
-    elif key == 'd':
+    elif key == b'd':
       self.camera[4]+=0.1
-    elif key == 'D':
+    elif key ==b'D':
       self.camera[4]-=0.1  
-    elif  key == 'w' :
-      pass
-    elif  key == 'W' :
-      pass
+    elif  key ==b'w' :
+      self.show_axes=False
+    elif  key ==b'W' :
+      self.show_axes=True
     else :
       pass
     glutPostRedisplay()
