@@ -53,7 +53,7 @@ def create_cone(base,height,slices=10,stacks=5) :
 
 def create_joint(radius) :
   longitude,latitude=10,20
-  self.create_sphere(radius,longitude,latitude)
+  create_sphere(radius,longitude,latitude)
 
 def create_arrow(base,top,height,slices=10,stacks=5) :
   create_stick(base,top,height,slices,stacks)
@@ -103,7 +103,6 @@ class Model :
 class Car(Model) :
   def __init__(self,size=1.0) :
     Model.__init__(self,size)
-
   def create(self) :
     glPushMatrix()
     glScalef(1,1,2)
@@ -111,10 +110,29 @@ class Car(Model) :
     create_arrow(self.size/6.0,self.size/6.0,self.size)
     glPopMatrix()
     # roue av droite
-    self.create_wheel(3)
+    glPushMatrix()
+    glRotatef(90,0,1,0)
+    glTranslatef(-1.2,0,-1)
+    self.create_wheel()
+    glPopMatrix()
     # roue av gauche
+    glPushMatrix()
+    glRotatef(90,0,1,0)
+    glTranslatef(-1.2,0,1)
+    self.create_wheel()
+    glPopMatrix()
     # roue ar droite
+    glPushMatrix()
+    glRotatef(90,0,1,0)
+    glTranslatef(1.2,0,-1)
+    self.create_wheel()
+    glPopMatrix()
     # roue ar gauche
+    glPushMatrix()
+    glRotatef(90,0,1,0)
+    glTranslatef(1.2,0,1)
+    self.create_wheel()
+    glPopMatrix()
 
   def create_wheel(self,boulons=5) :
     glutWireCube(0.2*self.size)

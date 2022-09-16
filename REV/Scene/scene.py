@@ -152,6 +152,10 @@ class Scene :
       self.camera[2]=self.camera[2]-0.1
     elif  key == 'N' :
       self.camera[2]=self.camera[2]+0.1
+    elif key == 'd':
+      self.camera[4]+=0.1
+    elif key == 'D':
+      self.camera[4]-=0.1  
     elif  key == 'w' :
       pass
     elif  key == 'W' :
