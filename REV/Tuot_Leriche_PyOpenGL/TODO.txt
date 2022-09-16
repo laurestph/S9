@@ -1,0 +1,72 @@
+En début de  seance
+===================
+1) Copier le repertoire du sujet de labos :
+  - /home/TP/modules/sujets/REV/PyOpenGL
+chez vous en le renommant Dupond_Dupont_PyOpenGL (si vos noms sont Dupond, Dupont):
+--> cp -r /home/TP/modules/sujets/REV/PyOpenGL/ $HOME/chemin_acces_repertoire_REV_OpenGL/Dupond_Dupont_PyOpenGL
+
+1) Tester les applications :
+--> python carre.py
+--> python cube.py
+--> python scene.py
+
+Création de scene (models.py,scene.py)
+=================
+Les modèles seront créés dans un fichier (model.py) et utilisés dans la scène (scene.p
+
+L'objectif du labo est de créer un repère de scène ainsi qu'un modèle de voiture
+que l'on déplacera dans le plan Oxz  à l'aide des fleches du clavier.
+  
+1) Repère de scene3D
+---------------------
+Créer un modèle du repère de scène (world_coordinate_system()) -----------------> fait
+qui soit redimensionnable (size) -----------------> fait
+
+Pour créer ce modèle on implémentera une fonction :
+   - create_axe() : création d'un axe (disque+cylindre+cone)-----------------> fait
+On utilisera ensuite cette fonction pour créer les trois axes du repère-----------------> fait
+ainsi que la carrosserie du modèle de voiture-----------------> pas fait
+
+On représentera les axes avec le code de couleur conventionnel (R,G,B) pour (Ox,Oy,Oz). -----------------> fait
+Autrement dit :
+  a) axe Ox en Rouge
+  b) axe Oy en Vert
+  c) axe Oz en Bleu
+
+On ajoutera ce modèle de repère dans la scène. 
+Ajouter également dans  la scène  le sol  (create_floor()) sur lequel sera palcé le repère. -----------------> fait
+
+On mettra en place les touches d'interaction (w/W) pour rendre visible/invisible le repère.-----------------> fait
+
+Modifier interactivement les parametres de caméra pour pouvoir se rapprocher ou tourner-----------------> pas fait
+autour de la scene  dans le plan Oxz.
+
+2) Création du véhicule
+------------------------
+Créer un modèle de  véhicule (car()) qui soit redimensionnable (size) 
+   a) créer une carroserie de voiture (disque + cylindre + cone)
+   b) positionner la voiture dans la scène 
+   c) créer une roue de voiture (utiliser un tore OpenGL)
+   d) créer des boulons (cylindre + disk) sur chaque roue
+   e) créer et positionner 4 roues avec leurs boulons sur la voiture
+
+3) Manipulation du véhicule
+---------------------------
+Mettre en place les touches d'interaction pour manipuler la voiture 
+   a) faire avancer/reculer la voiture en faisant tourner le roues + boulons
+   b) faire changer de direction à la voiture en faisant tourner les roues avants -> fait
+   c) repositionner les roues correctement lorsque le véhicule avance ou recule -> fait
+
+Archivage
+=========
+Se déplacer sur le repertoire parent :
+--> cd ..
+Creer une archive Dupond_Dupont_PyOpenGL.tgz du repertoire Dupond_Dupont_PyOpenGL/ :
+--> tar zcvf Dupond_Dupont_PyOpenGL.tgz Dupond_Dupont_PyOpenGL/
+Deposer cette archive sous le repertoire de rendu de travail  : 
+--> cp Dupond_Dupont_PyOpenGL.tgz /home/TP/TPrendu/nedelec/REV/PyOpenGL
+
+Attention
+---------
+VERIFIER que l'archive n'est pas vide et qu'elle contient les fichiers de l'application : 
+--> tar ztvf Dupond_Dupont_PyOpenGL.tgz
