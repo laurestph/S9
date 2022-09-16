@@ -28,6 +28,7 @@ zC=1
 r=math.sqrt(xC**2+zC**2)
 angleCam=math.pi/4.               #pour avoir une position par défault à 1,1,1 avec la caméra regardant le milieu de la scène
 rot_roue=0
+dir_roue=0
 
 def display() :
 #  glClearColor(1.0,1.0,1.0,0.0);
@@ -52,7 +53,7 @@ def display() :
   
   glTranslatef(position[0],position[1],position[2])
   glRotatef(orientation,0,1,0)
-  car(size,rot_roue)
+  car(size,rot_roue,dir_roue)
   
 
   glutSwapBuffers()
@@ -131,19 +132,23 @@ def on_special_key_action(key,x,y) :
   print("on_special_key_action(key,x,y)")
 
 def on_special_key_action(key,x,y) :
-    global position,orientation, rot_roue
+    global position,orientation, rot_roue, dir_roue
     if key ==  GLUT_KEY_UP :
         position[0]+=0.1*size*sin(orientation*pi/180.0)
         position[2]+=0.1*size*cos(orientation*pi/180.0)
         rot_roue+=20
+        dir_roue=0
     elif  key ==  GLUT_KEY_DOWN :
         position[0]-=0.1*size*sin(orientation*pi/180.0)
         position[2]-=0.1*size*cos(orientation*pi/180.0)
         rot_roue-=20
+        dir_roue=0
     elif key ==  GLUT_KEY_LEFT :
         orientation+=5
+        dir_roue=25
     elif  key ==  GLUT_KEY_RIGHT :
         orientation-=5
+        dir_roue=-25
     else :
         pass
     glutPostRedisplay()
